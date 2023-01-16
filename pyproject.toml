@@ -1,0 +1,25 @@
+[project]
+name = "pear-cli"
+description = "An application to save and administrate the series, movies and documentaries you want to watch later"
+version = "0.0.1"
+authors = [
+    { name = "Gerardo Castillo", email = "gcastillo.m14@gmail.com" }
+]
+packages = [
+    { include = "pear" }
+] 
+documentation = "https://github.com/GerarC/Pear"
+repository = "https://github.com/GerarC/Pear"
+homepage = "https://github.com/GerarC/Pear"
+dependencies = [
+    "typer[all]",
+    "rich"
+]
+
+[project.optional-dependencies]
+dev = [
+]
+
+[build-system]
+build-backend = ""
+requires = [""]
