@@ -1,0 +1,41 @@
+{
+  "include": [
+    "persistence",
+    "utils"
+  ],
+  
+  "exclude": [
+    "**/node_modules",
+    "**/__pycache__",
+    "src/experimental",
+    "src/typestubs"
+  ],
+
+  "ignore": [
+    "src/oldstuff"
+  ],
+
+  "defineConstant": {
+    "DEBUG": true
+  },
+
+  "stubPath": "./stubs",
+
+  "reportMissingImports": true,
+  "reportMissingTypeStubs": false,
+
+  "pythonVersion": "3.10.9",
+  "pythonPlatform": "Linux",
+
+    {
+      "root": "./tests",
+      "extraPaths": [
+        "./tests/e2e",
+        "./sdk"
+      ]
+    },
+    {
+      "root": "pear"
+    }
+  ]
+}
