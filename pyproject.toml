@@ -1,25 +1,27 @@
 [project]
 name = "pear-cli"
 description = "An application to save and administrate the series, movies and documentaries you want to watch later"
-version = "0.0.1"
+version = "0.0.6"
 authors = [
     { name = "Gerardo Castillo", email = "gcastillo.m14@gmail.com" }
 ]
 packages = [
     { include = "pear" }
 ] 
-documentation = "https://github.com/GerarC/Pear"
-repository = "https://github.com/GerarC/Pear"
-homepage = "https://github.com/GerarC/Pear"
 dependencies = [
     "typer[all]",
     "rich"
 ]
+keywords = ["pear", "cli"]
 
-[project.optional-dependencies]
-dev = [
-]
+[project.urls]
+documentation = "https://github.com/GerarC/Pear"
+repository = "https://github.com/GerarC/Pear"
+homepage = "https://github.com/GerarC/Pear"
 
 [build-system]
-build-backend = ""
-requires = [""]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project.scripts]
+pear = "pear.pear:main"

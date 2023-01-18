@@ -76,15 +76,17 @@ class JsonDB():
             f.seek(0)
             json.dump(data, f, indent = 4)
 
-    def delete_by_index(self, index: int) -> None:
+    def delete_by_index(self, index: int):
         '''If the database is a list of objects deletes the object of the given index else it does nothing.
 
         Args:
             index (int): the object index.
+
+        Returns:
+            item (dict, list): the items that was delete form the database.
         '''
-        with open(self._filename, 'r+') as f:
-            data = json.load(f)
-            if type(data) == list:
-                data.pop(index)
-            f.seek(0)
-            json.dump(data, f, indent = 4)
+        data = self.read()
+        if type(data) == list:
+            deleted = data.pop(index)
+            self.write(data)
+            return deleted

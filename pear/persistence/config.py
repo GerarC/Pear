@@ -8,7 +8,8 @@ class ConfigHandler:
     '''Class to handle the config.
     '''
     def __init__(self):
-        self.config_path = os.path.join(expanduser('~'), '.config', 'pear')
+        self.config_path = os.path.join(
+            expanduser('~'), '.config', 'pear')
         if not os.path.exists(self.config_path):
             os.makedirs(self.config_path)
 

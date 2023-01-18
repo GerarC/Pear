@@ -80,7 +80,7 @@ class Archive:
             self.__database.write(items)
         else: raise IndexError
 
-    def delete_by_index(self, index: int) -> dict:
+    def delete_by_index(self, index: int):
         """Deletes the item of the index.
 
         Args:
@@ -95,7 +95,6 @@ class Archive:
         items = self.list_archive()
         items_amount = len(items)
         if 0 <= index < items_amount and items_amount:
-            item = items.pop(index)
-            self.__database.write(items)
+            item = self.__database.delete_by_index(index)
             return item
         else: raise IndexError
