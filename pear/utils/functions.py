@@ -17,12 +17,13 @@ def centered_print(text, style = None) -> None:
     width = shutil.get_terminal_size().columns
     console.print(Align.center(text, style=style, width=width))
 
-def print_archive_table(title: str, archive: list):
+def print_archive_table(title: str, archive: list, showtype:bool=False):
     ''' Print a table of the given archive.
 
     Args:
         title (str): title of the table.
         archive (list): list with the data.
+        showtype (bool): lets show the types
     '''
     table = Table(
         title= f'List of {title}',
@@ -32,19 +33,27 @@ def print_archive_table(title: str, archive: list):
     )
     table.add_column('Index', style='#E39400')
     table.add_column(title, justify='center')
+    if showtype:
+        table.add_column('Type', justify='center')
     table.add_column('Seen')
     if not len(archive): centered_print(table)
     else:
         for index, item in enumerate(archive):
+            item_type = None
             if item['seen']:
-                item_name = f'[#818596] [s]{item["name"]}[/s][/]'
-                item_status = '[#F2CE00] ✔[/]'
-                item_index = f'[#818596] [s]{str(index + 1)}[/s][/]'
+                item_index = f'[#818596][s]{str(index + 1)}[/s][/]'
+                item_name = f'[#818596][s]{item["name"]}[/s][/]'
+                if showtype:
+                    item_type = f'[#818596][s]{item["type"]}[/s][/]'
+                item_status = '[#F2CE00][b]✔[/b][/]'
             else:
-                item_name = f'[#F2CE00] {item["name"]}[/]'
-                item_status = '[#E34400] ✗[/]'
-                item_index = f'[#F2CE00] {str(index + 1)}[/]'
-            table.add_row(item_index, item_name, item_status)
+                item_index = f'[#F2CE00]{str(index + 1)}[/]'
+                item_name = f'[#F2CE00]{item["name"]}[/]'
+                if showtype:
+                    item_type = f'[#F2CE00]{item["type"].capitalize()}[/]'
+                item_status = '[#E34400][b]✗[/b][/]'
+            if showtype: table.add_row(item_index, item_name, item_type, item_status)
+            else: table.add_row(item_index, item_name, item_status)
         centered_print(table)
 
 def show_all_archive(type: str):

@@ -1,7 +1,7 @@
 [project]
 name = "pear-cli"
 description = "An application to save and administrate the series, movies and documentaries you want to watch later"
-version = "0.0.6"
+version = "0.0.8"
 authors = [
     { name = "Gerardo Castillo", email = "gcastillo.m14@gmail.com" }
 ]

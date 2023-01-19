@@ -76,7 +76,7 @@ class Archive:
         items = self.list_archive()
         items_amount = len(items)
         if 0 <= index < items_amount and items_amount:
-            items[index]["seen"] = True
+            items[index]["seen"] = False
             self.__database.write(items)
         else: raise IndexError
 
